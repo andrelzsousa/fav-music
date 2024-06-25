@@ -1,22 +1,20 @@
-"use client";
+'use client'
 
-import { storageGet } from "@/services/localStorage";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { storageGet } from '@/services/localStorage'
+import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 
 const AuthenticatedLayout = ({ children }: { children: React.ReactNode }) => {
-    const router = useRouter();
-    const token = storageGet("token");
-    
-    useEffect(() => {
-        if(!token) {
-            router.push("/");
-        }
-    }, [token, router])
+  const router = useRouter()
+  const token = storageGet('token')
 
-    return (
-        <div>{children}</div>
-    );
+  useEffect(() => {
+    if (!token) {
+      router.push('/')
+    }
+  }, [token, router])
+
+  return <div>{children}</div>
 }
 
-export default AuthenticatedLayout;
+export default AuthenticatedLayout

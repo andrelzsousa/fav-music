@@ -1,28 +1,28 @@
-const APP_STORAGE_SUFFIX = "@PlaylistCreator:";
+const APP_STORAGE_SUFFIX = '@PlaylistCreator:'
 
 function storageGet<T>(key: string): T | undefined {
   const stringified =
-    typeof window !== "undefined"
+    typeof window !== 'undefined'
       ? localStorage.getItem(`${APP_STORAGE_SUFFIX}${key}`)
-      : undefined;
+      : undefined
   if (!stringified) {
-    return undefined;
+    return undefined
   }
 
-  return JSON.parse(stringified) as T;
+  return JSON.parse(stringified) as T
 }
 
 function storageSet(key: string, data: object | string): void {
-  typeof window !== "undefined" &&
-    localStorage.setItem(`${APP_STORAGE_SUFFIX}${key}`, JSON.stringify(data));
+  typeof window !== 'undefined' &&
+    localStorage.setItem(`${APP_STORAGE_SUFFIX}${key}`, JSON.stringify(data))
 }
 
 function storageDelete(key: string): void {
-  localStorage.removeItem(`${APP_STORAGE_SUFFIX}${key}`);
+  localStorage.removeItem(`${APP_STORAGE_SUFFIX}${key}`)
 }
 
 function storageClear(): void {
-  localStorage.clear();
+  localStorage.clear()
 }
 
-export { storageGet, storageSet, storageDelete, storageClear };
+export { storageGet, storageSet, storageDelete, storageClear }
