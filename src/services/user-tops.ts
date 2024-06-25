@@ -1,9 +1,7 @@
 import axios from 'axios'
-import { storageGet } from './localStorage'
 
-export const getTopTracks = async () => {
+export const getTopTracks = async (token: string) => {
   try {
-    const token = storageGet('token')
     const response = await axios.get(
       `https://api.spotify.com/v1/me/top/tracks?time_range=short_term`,
       {

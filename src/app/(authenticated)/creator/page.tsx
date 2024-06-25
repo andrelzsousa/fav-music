@@ -23,8 +23,8 @@ const CreatePage = () => {
   const genAI = new GoogleGenerativeAI(GEMINI_KEY as string)
   const model = genAI.getGenerativeModel({ model: 'gemini-pro' })
 
-  const token = storageGet('token')
-  const { data } = useQuery('topTracks', getTopTracks, {
+  const token = storageGet<string>('token')
+  const { data } = useQuery('topTracks', () => getTopTracks(token as string), {
     enabled: !!token,
   })
 
@@ -56,6 +56,8 @@ const CreatePage = () => {
   }
 
   const hasResponse = !!albumImage && !!trackName && !!artistName && !!trackUrl
+
+  if (!tracks) return null
 
   return (
     <div className="flex flex-col items-center py-10">
