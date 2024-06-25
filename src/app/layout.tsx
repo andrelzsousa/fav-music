@@ -23,7 +23,9 @@ export default function RootLayout({
       <QueryClientProviderApp>
         <body className={inter.className}>
           <Header />
-          <Wrapper className="bg-fern-50 min-h-screen">{children}</Wrapper>
+          <div className="bg-fern-50 min-h-screen">
+            <Wrapper className="">{children}</Wrapper>
+          </div>
         </body>
       </QueryClientProviderApp>
     </html>
